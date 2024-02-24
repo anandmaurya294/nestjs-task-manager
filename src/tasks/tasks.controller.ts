@@ -49,7 +49,7 @@ export class TasksController {
 
   @Get('/:id')
   getTaskById(@Param('id') id: string, @GetUser() user: User) {
-    return this.tasksService.getTaksById(id, user);
+    return this.tasksService.getTasksById(id, user);
   }
 
   @Delete('/:id')
