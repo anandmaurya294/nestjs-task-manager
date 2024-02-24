@@ -6,7 +6,7 @@ import { TaskRepository } from './tasks.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
 import { NextFunction } from 'express';
-import { User } from 'src/auth/user.entity';
+import { User } from '../auth/user.entity';
 
 @Injectable()
 export class TasksService {
@@ -21,7 +21,7 @@ export class TasksService {
   creatTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
     return this.taskRepository.createTask(createTaskDto, user);
   }
-  async getTaksById(id: string, user: User): Promise<Task> {
+  async getTasksById(id: string, user: User): Promise<Task> {
     const found = await this.taskRepository.findOne({ where: { id, user } });
     if (!found) {
       throw new NotFoundException('Task not found');

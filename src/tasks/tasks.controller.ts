@@ -15,8 +15,8 @@ import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { UpdateTasksStatusDto } from './dto/update-tasks-status.dto';
 import { Task } from './task.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { User } from 'src/auth/user.entity';
-import { GetUser } from 'src/auth/get-user.decorator';
+import { User } from '../auth/user.entity';
+import { GetUser } from '../auth/get-user.decorator';
 import { Logger } from '@nestjs/common';
 
 @Controller('tasks')
@@ -49,7 +49,7 @@ export class TasksController {
 
   @Get('/:id')
   getTaskById(@Param('id') id: string, @GetUser() user: User) {
-    return this.tasksService.getTaksById(id, user);
+    return this.tasksService.getTasksById(id, user);
   }
 
   @Delete('/:id')
